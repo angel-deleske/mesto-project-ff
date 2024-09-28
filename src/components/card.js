@@ -5,7 +5,7 @@ export const createCard = (cardTemplate, cardData, deleteCard, likeCard, openIma
   const likeButton = cardElement.querySelector('.card__like-button');
 
   cardImage.src = cardData.link;
-  cardImage.alt = 'Пейзаж ' + cardData.name;
+  cardImage.alt = cardData.name;
   cardElement.querySelector('.card__title').textContent = cardData.name;
 
   likeButton.addEventListener('click', likeCard);

@@ -49,17 +49,11 @@ editProfileForm.addEventListener('submit', profileFormSubmit);
 const createCardModal = document.querySelector('.popup_type_new-card');
 const addCardButton = document.querySelector('.profile__add-button');
 const formNewPlace = document.querySelector('[name = "new-place"]');
-const nameCard = document.querySelector('[name = "place-name"]');
-const linkCard  = document.querySelector('[name = "link"]');
-const inputNameCard = document.querySelector('.popup__input_type_card-name');
-const inputLinkCard  = document.querySelector('.popup__input_type_url');
+const inputNameCard = formNewPlace.querySelector('.popup__input_type_card-name');
+const inputLinkCard  = formNewPlace.querySelector('.popup__input_type_url'); 
 
 //слушалка открытия модалки с добавл.карточки
-addCardButton.addEventListener('click', function (evt) {
-  if (evt.target === evt.currentTarget) {
-    openModal(createCardModal);
-  }
-});
+addCardButton.addEventListener('click', () => openModal(createCardModal));
 
 //функция открытия карточки крупным планом
 function openImage(cardDataLink, cardDataName) {
@@ -72,10 +66,8 @@ function openImage(cardDataLink, cardDataName) {
 //функция добавления новых карточек
 function addNewCard(evt) {
   evt.preventDefault();
-  nameCard.textContent = inputNameCard.value;
-  linkCard.src = inputLinkCard.value;
-  const item = {name: nameCard.value,
-    link: linkCard.value} 
+  const item = {name: inputNameCard.value,
+    link: inputLinkCard.value} 
   const newCard = createCard(cardTemplate, item, deleteCard, likeCard, openImage);
   cardsContainer.prepend(newCard);
   evt.target.reset();
