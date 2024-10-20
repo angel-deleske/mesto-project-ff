@@ -107,6 +107,8 @@ function addNewCard(evt) {
     .then ((card) => {
       const newCard = createCard(card, userId, likeCard, deleteCard, openImage);
       cardsContainer.prepend(newCard);
+      inputNameCard.value = ''; 
+      inputLinkCard.value = ''; 
       closeModal(createCardModal);
     })
   .catch((err) => {
@@ -121,7 +123,7 @@ formNewPlace.addEventListener('submit', addNewCard);
 
 //слушалка открытия модалки с ред.аватара
 profileImage.addEventListener ('click', () => { 
-  avatarEditForm.reset();//сделала очистку полей формы при открытии попапа
+  avatarEditForm.reset();
   clearValidation(avatarForm, validationConfig);
   openModal(avatarForm);
 });
@@ -140,7 +142,7 @@ editProfileForm.addEventListener('submit', submitProfileForm);
 
 //слушалка открытия модалки с добавл.карточки
 addCardButton.addEventListener('click', function () {
-  formNewPlace.reset();//сделала очистку полей формы при открытии, вне зависимости от того, была ли успешная отправка или нет
+  formNewPlace.reset();
   clearValidation(createCardModal, validationConfig);
   openModal(createCardModal);
 });
