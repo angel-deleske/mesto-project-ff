@@ -56,7 +56,7 @@ const validationConfig = {
 //функция отправки формы редактирования аватара
 function submitProfileAvatar(evt) {
   evt.preventDefault();
-  buttonSaveAvatar.textContent = buttonSaveAvatar.getAttribute('data-loading');
+  buttonSaveAvatar.textContent = 'Сохранение...';
   updateUserAvatar(avatarLinkInput.value)
   
   .then((userData) => {
@@ -72,21 +72,18 @@ function submitProfileAvatar(evt) {
 // функция отправки формы редактирования профиля
 function submitProfileForm(evt) {
   evt.preventDefault();
-  buttonSaveProfile.textContent = buttonSaveProfile.getAttribute('data-loading');
+  buttonSaveProfile.textContent = 'Сохранение...';
   updateUserInfo(nameInput.value, jobInput.value)
 
   .then((userData) => {
     profileTitle.textContent = userData.name;
     profileDescription.textContent = userData.about;
-
     closeModal(profileForm);
   })
   .catch((err) =>
     console.log(err)
   )
   .finally(() => (buttonSaveProfile.textContent = buttonSaveProfile.getAttribute('button-default-text')));
-
-  closeModal(profileForm);
 };
 
 //функция открытия карточки крупным планом
@@ -100,7 +97,7 @@ function openImage(cardDataLink, cardDataName) {
 //функция добавления новых карточек
 function addNewCard(evt) {
   evt.preventDefault();
-  buttonSaveCard.textContent = buttonSaveCard.getAttribute('data-loading');
+  buttonSaveCard.textContent = 'Сохранение...';
   const item = {name: inputNameCard.value,
     link: inputLinkCard.value};
   postNewCard(item)
